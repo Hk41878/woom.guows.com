@@ -1,0 +1,41 @@
+/* Progress Container */
+#progressContainer {
+    position: fixed;
+    bottom: 90px; /* navigation se thoda upar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 18px;
+    padding: 14px 18px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    display: none;
+    z-index: 9999;
+}
+
+
+/* Progress Bar */
+#progressBar {
+    width: 0%;
+    height: 8px;
+    border-radius: 10px;
+
+    background: linear-gradient(90deg,#2b6cff,#5a3bff);
+
+    transition: width 0.2s linear;
+    margin-bottom: 8px;
+}
+
+
+/* Progress Text */
+#progressText {
+    font-size: 13px;
+    text-align: center;
+    opacity: 0.85;
+}

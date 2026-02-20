@@ -1,0 +1,48 @@
+/* BUTTON CONTAINER */
+.buttons {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 80px auto; /* increased bottom gap */
+    display: grid;
+    gap: 16px;
+}
+
+
+/* BASE BUTTON */
+.btn {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: all 0.25s ease;
+}
+
+
+/* HOVER / ACTIVE EFFECT */
+.btn:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+
+/* PRIMARY BUTTON (Condividi) */
+.primary {
+    background: linear-gradient(135deg,#2b6cff,#5a3bff);
+    border: none;
+}
+
+.primary:hover {
+    opacity: 0.9;
+}
