@@ -8,7 +8,7 @@ const qrModal = document.getElementById("qrModal");
 const qrImage = document.getElementById("qrImage");
 const closeQr = document.getElementById("closeQr");
 
-// 🔥 Description Expand Elements
+// Description Expand Elements
 const expandBtn = document.getElementById("expandDescBtn");
 const descModal = document.getElementById("descModal");
 const descModalContent = document.getElementById("descModalContent");
@@ -23,7 +23,6 @@ async function handlePDFAction(type) {
 
     let blob = await getCachedFile(record.link);
 
-    // If not cached → download with progress
     if (!blob) {
         try {
             blob = await fetchWithProgress(record.link);
@@ -34,7 +33,6 @@ async function handlePDFAction(type) {
         }
     }
 
-    // ===== OPEN =====
     if (type === "open") {
         const blobUrl = URL.createObjectURL(blob);
         window.location.href = blobUrl;
@@ -44,7 +42,6 @@ async function handlePDFAction(type) {
         }, 5000);
     }
 
-    // ===== DOWNLOAD =====
     if (type === "download") {
 
         const downloadBlob = new Blob(
@@ -69,22 +66,16 @@ async function handlePDFAction(type) {
 }
 
 
-// ===== SHARE =====
+// ===== SHARE (ONLY URL) =====
 async function sharePDF() {
 
     const fullUrl =
         window.location.origin +
-        window.location.pathname +
-        "?page=" + (currentIndex + 1);
-
-    const record = records[currentIndex];
-    if (!record) return;
+        "/?page=" + (currentIndex + 1);
 
     if (navigator.share) {
         try {
             await navigator.share({
-                title: record.name,
-                text: record.description,
                 url: fullUrl
             });
         } catch {}
@@ -100,8 +91,7 @@ function openQR() {
 
     const fullUrl =
         window.location.origin +
-        window.location.pathname +
-        "?page=" + (currentIndex + 1);
+        "/?page=" + (currentIndex + 1);
 
     qrImage.src =
         "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" +
@@ -146,7 +136,6 @@ qrModal.addEventListener("click", (e) => {
     }
 });
 
-// Expand Description Events
 expandBtn.addEventListener("click", openDescriptionModal);
 closeDesc.addEventListener("click", closeDescriptionModal);
 
