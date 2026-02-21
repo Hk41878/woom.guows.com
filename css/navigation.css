@@ -1,0 +1,81 @@
+/* Navigation Container */
+.navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+
+/* Page Indicator */
+#pageIndicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.85;
+    pointer-events: auto;
+}
+
+
+/* Quarter Circle Buttons */
+.nav-btn {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#2b6cff,#5a3bff);
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    pointer-events: auto;
+}
+
+
+/* Press effect */
+.nav-btn:active {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+
+/* SVG icon */
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    stroke: white;
+    stroke-width: 2.5;
+    fill: none;
+}
+
+
+
+
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+    stroke-width: 2.5;
+    fill: none;
+}
+
+/* RIGHT (Next) */
+#nextBtn {
+    bottom: 25px;
+    right: 25px;
+}
+
+/* LEFT (Previous) */
+#prevBtn {
+    bottom: 25px;
+    left: 25px;
+}
