@@ -18,10 +18,15 @@ function getPageFromURL() {
 }
 
 
-// 🔥 Update URL (ONLY when navigating)
+// 🔥 Update URL (SAFE FULL URL)
 function updateURL(index) {
     const pageNumber = index + 1;
-    const newUrl = window.location.pathname + "?page=" + pageNumber;
+
+    const newUrl =
+        window.location.origin +
+        window.location.pathname +
+        "?page=" + pageNumber;
+
     window.history.replaceState(null, "", newUrl);
 }
 
@@ -64,5 +69,3 @@ nextBtn.addEventListener("click", () => {
         rotateBackground(1);
     }
 });
-
-
