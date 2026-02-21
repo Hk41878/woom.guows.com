@@ -5,15 +5,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const rawPage = params.get("page");
 
-    // If ?page parameter exists
+    let startIndex = 0;
+
     if (rawPage !== null) {
 
         const pageParam = parseInt(rawPage);
 
-        // ❌ Invalid conditions
         if (
             isNaN(pageParam) ||
-            rawPage.match(/[^0-9]/) ||   // letters present
+            rawPage.match(/[^0-9]/) ||
             pageParam < 1 ||
             pageParam > records.length
         ) {
@@ -21,14 +21,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
-        loadPage(pageParam - 1);
-        updateURL(pageParam - 1);
-
-    } else {
-        // No parameter → default page 1
-        loadPage(0);
-        updateURL(0);
+        startIndex = pageParam - 1;
     }
+
+    // 🔥 IMPORTANT: Only load page, do NOT rewrite URL here
+    loadPage(startIndex);
 });
 
 
@@ -52,11 +49,9 @@ function loadPage(index) {
 
     const record = records[index];
 
-    // Update Title & Description
     document.getElementById("pdfTitle").innerText = record.name;
     document.getElementById("pdfDescription").innerText = record.description;
 
-    // Update Navigation Indicator
     document.getElementById("pageIndicator").innerText =
         "Pagina " + (index + 1);
 
